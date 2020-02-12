@@ -1,0 +1,48 @@
+﻿@model JustEat.WebApp.Models.ViewModels.RestaurantListViewModel
+
+<div class="mdl-grid no-padding">
+    <div class="mdl-cell mdl-cell--12-col no-margin">
+        <div class="mdl-grid no-padding">
+            <div class="mdl-cell mdl-cell--12-col no-margin banner-image">
+                <h2>Find your flavour</h2>
+                <h5>Enter your postcode to find local restaurants and takeaways</h5>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col search-container no-margin">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <input type="text" name="outcode" class="searchBar" placeholder="Enter your postcode..."/>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Find </button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col results">
+
+        @if (Model.Restaurants.Any())
+        {
+            <h2>Restaurants in and around @Model.Outcode.ToUpperInvariant()</h2>
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">@Html.ActionLink("Name", "Index", new {outcode = Model.Outcode, orderBy = "name", orderByDescending = !Model.OrderByDescending})</th>
+                    <th>@Html.ActionLink("Rating", "Index", new {outcode = Model.Outcode, orderBy = "rating", orderByDescending = !Model.OrderByDescending})</th>
+                    <th>Types Of Cuisine</th>
+                </tr>
+                @foreach (var takeaway in Model.Restaurants)
+                {
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">@takeaway.Name</td>
+                        <td>@takeaway.RatingStars</td>
+                        <td>
+                            @if (takeaway.CuisineTypes != null)
+                            {
+                                var s = string.Join(", ", takeaway.CuisineTypes.Select(x => x.Name).ToArray());
+                                @s
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

@@ -1,0 +1,94 @@
+﻿$white: white;
+$grey: #808080;
+
+body {
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding: 0;
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.mdl-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.banner-image {
+    background-image: linear-gradient(rgba(164,145,96,.45),rgba(255,255,255,0)),url("//dy3erx8o0a6nh.cloudfront.net/images/bg_outdoors_desktop.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        text-align: center;
+        font-size: 64px;
+        color: $white;
+    }
+
+    h5 {
+        text-align: center;
+        color: $white;
+    }
+}
+
+.search-container {
+    border-bottom: 1px solid $grey;
+    opacity: 0.6;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        padding: 1em;
+        input {
+            height:3em;
+            padding: 0 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            min-width: 9em;
+            margin-right: 1em;
+        }
+    }
+}
+
+.results {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2 {
+    }
+
+    table {
+        tr {
+            th {
+                a {
+                    text-decoration:none;
+                    font-weight: bold;
+
+                }
+            }
+        }
+    }
+}
